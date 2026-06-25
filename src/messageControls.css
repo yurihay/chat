@@ -1,0 +1,70 @@
+.msg-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  max-width: min(760px, 92%);
+}
+
+.msg-wrap.assistant {
+  align-self: flex-start;
+}
+
+.msg-wrap.user {
+  align-self: flex-end;
+}
+
+.msg-wrap .msg {
+  max-width: 100%;
+}
+
+.msg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  opacity: .72;
+  transition: opacity .18s ease;
+}
+
+.msg-wrap:hover .msg-actions,
+.msg-wrap:focus-within .msg-actions {
+  opacity: 1;
+}
+
+.msg-actions button {
+  padding: .35rem .55rem;
+  border-radius: 999px;
+  font-size: .78rem;
+  background: rgba(255,255,255,.055);
+}
+
+.variant-count {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  color: #cbd5e1;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.edit-box {
+  min-height: 92px;
+  background: rgba(2,6,23,.55);
+  border-color: rgba(249,168,212,.35);
+}
+
+@media (max-width: 700px) {
+  .msg-wrap {
+    max-width: 96%;
+  }
+
+  .msg-actions {
+    opacity: 1;
+  }
+
+  .msg-actions button,
+  .variant-count {
+    font-size: .75rem;
+  }
+}
