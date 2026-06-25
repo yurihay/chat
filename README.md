@@ -1,6 +1,22 @@
 # Personas Chat
 
-Aplicativo React/Vite para conversar com personagens de roleplay, com memória, lorebook, favoritos, backup, modo diretor e modo demo.
+Site/app React + Vite para conversar com personagens de roleplay, com memória, lorebook, favoritos, backup, modo diretor, comandos narrativos e modo demo.
+
+A página inicial foi organizada em formato de site/landing page, com apresentação do projeto, vitrine de personagens e chamada para abrir o chat.
+
+## Recursos
+
+- Personagens prontos e personagens criados pelo usuário
+- Persona do usuário para entrar na história
+- Memória local por personagem
+- Lorebook para regras do mundo e detalhes canônicos
+- Momentos fixados
+- Humor e afinidade
+- Diário secreto
+- Dado do destino
+- Modo diretor
+- Backup e importação em JSON
+- Modo demo local para funcionar no GitHub Pages
 
 ## Rodar localmente
 
@@ -18,6 +34,12 @@ npm run build
 ## Deploy
 
 Este projeto está preparado para GitHub Pages usando Vite com `base: '/chat/'`.
+
+Endereço esperado após ativar o Pages:
+
+```txt
+https://yurihay.github.io/chat/
+```
 
 ## Observação sobre IA
 
