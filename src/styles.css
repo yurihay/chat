@@ -6,7 +6,8 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #25245a 0, transparent 35%), #050816; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #25245a 0, transparent 35%), radial-gradient(circle at bottom right, rgba(255,92,138,.2), transparent 32%), #050816; }
 button, input, textarea, select { font: inherit; }
 button { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); color: #f8fafc; border-radius: 14px; padding: .75rem 1rem; cursor: pointer; transition: .2s ease; }
 button:hover { transform: translateY(-1px); background: rgba(255,255,255,.12); }
@@ -16,7 +17,7 @@ textarea { min-height: 100px; resize: vertical; }
 pre { white-space: pre-wrap; word-break: break-word; background: rgba(255,255,255,.05); padding: 1rem; border-radius: 14px; }
 
 .app { min-height: 100vh; display: grid; grid-template-columns: 280px minmax(0, 1fr); }
-.sidebar { position: sticky; top: 0; height: 100vh; padding: 1rem; display: flex; flex-direction: column; gap: .75rem; background: rgba(2,6,23,.72); backdrop-filter: blur(18px); border-right: 1px solid rgba(255,255,255,.08); }
+.sidebar { position: sticky; top: 0; height: 100vh; padding: 1rem; display: flex; flex-direction: column; gap: .75rem; background: rgba(2,6,23,.72); backdrop-filter: blur(18px); border-right: 1px solid rgba(255,255,255,.08); z-index: 20; }
 .brand { display: flex; align-items: center; gap: .8rem; padding: .8rem; border-radius: 20px; cursor: pointer; }
 .brand:hover { background: rgba(255,255,255,.06); }
 .logo { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 16px; background: linear-gradient(135deg, #C77DFF, #FF5C8A); font-size: 1.4rem; }
@@ -43,6 +44,28 @@ pre { white-space: pre-wrap; word-break: break-word; background: rgba(255,255,25
 .card p { color: #dbeafe; min-height: 52px; }
 .row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .row button { padding: .55rem .75rem; }
+
+/* Home em formato de site/landing page */
+.app:has(.hero) { grid-template-columns: 1fr; }
+.app:has(.hero) .sidebar { height: auto; position: sticky; top: 0; flex-direction: row; align-items: center; overflow-x: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); padding: .75rem clamp(1rem, 4vw, 3rem); }
+.app:has(.hero) .brand { margin-right: auto; min-width: 220px; }
+.app:has(.hero) .sidebar > button { white-space: nowrap; }
+.app:has(.hero) .mini-panel { display: none; }
+.app:has(.hero) .page { min-height: calc(100vh - 78px); padding: 0 clamp(1rem, 5vw, 5rem) 4rem; overflow: visible; }
+.app:has(.hero) .hero { max-width: 1180px; min-height: 68vh; display: grid; align-content: center; margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0 2rem; position: relative; }
+.app:has(.hero) .hero::before { content: 'Personagens com memória, lorebook e modo diretor'; display: inline-flex; width: max-content; max-width: 100%; margin-bottom: 1rem; padding: .45rem .75rem; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: #f9a8d4; background: rgba(255,255,255,.06); font-size: .9rem; font-weight: 800; }
+.app:has(.hero) .hero::after { content: ''; position: absolute; right: 0; top: 18%; width: min(360px, 42vw); aspect-ratio: 1; border-radius: 40%; background: radial-gradient(circle, rgba(199,125,255,.45), transparent 65%); filter: blur(20px); pointer-events: none; }
+.app:has(.hero) .hero h1 { max-width: 900px; font-size: clamp(2.8rem, 9vw, 7.5rem); line-height: .88; letter-spacing: -.08em; margin-bottom: 1.2rem; }
+.app:has(.hero) .hero p { max-width: 780px; font-size: clamp(1.05rem, 2vw, 1.35rem); color: #dbeafe; }
+.app:has(.hero) .search { margin-top: 1.5rem; max-width: 620px; background: rgba(255,255,255,.08); }
+.app:has(.hero) .grid { max-width: 1180px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.app:has(.hero) .grid::before { content: 'Vitrine de personagens'; grid-column: 1 / -1; margin-top: 1rem; font-size: clamp(1.7rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.05em; }
+.app:has(.hero) .grid::after { content: 'Use os botões para conversar, favoritar ou duplicar personagens. Os dados ficam salvos no seu navegador e podem ser exportados em backup.'; grid-column: 1 / -1; order: -1; max-width: 760px; color: #cbd5e1; margin-bottom: .5rem; }
+.app:has(.hero) .card { min-height: 290px; padding: 1.25rem; border-radius: 34px; box-shadow: 0 24px 80px rgba(0,0,0,.22); }
+.app:has(.hero) .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.2); transition: .2s ease; }
+.app:has(.hero) .card h2 { font-size: 1.8rem; }
+.app:has(.hero) .card p { font-size: 1.02rem; }
+.app:has(.hero) .page::after { content: 'Recursos extras: memória viva · lorebook · persona do usuário · humor · afinidade · diário secreto · dado do destino · modo diretor · backup local · comandos no chat'; display: block; max-width: 1180px; margin: 3rem auto 0; padding: 1.25rem; border: 1px solid rgba(255,255,255,.1); border-radius: 28px; background: linear-gradient(135deg, rgba(199,125,255,.14), rgba(92,200,255,.08)); color: #e2e8f0; font-weight: 800; text-align: center; }
 
 .chat { height: 100vh; display: grid; grid-template-rows: auto 1fr auto auto auto; min-width: 0; }
 .chat-head { display: flex; align-items: center; gap: .8rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(2,6,23,.6); backdrop-filter: blur(18px); }
@@ -79,4 +102,6 @@ summary { cursor: pointer; font-weight: 800; }
   .sidebar > button, .mini-panel { min-width: max-content; }
   .chat { height: calc(100vh - 92px); }
   .composer { grid-template-columns: 1fr; }
+  .app:has(.hero) .hero { min-height: 62vh; }
+  .app:has(.hero) .hero::after { opacity: .45; }
 }
